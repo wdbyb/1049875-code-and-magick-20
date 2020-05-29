@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Юрий Винивитин](https://up.htmlacademy.ru/javascript/20/user/1049875).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Новиков](https://htmlacademy.ru/profile/id1499681).
 
 ---
 
