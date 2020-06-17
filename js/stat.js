@@ -8,8 +8,6 @@ var GAP = 10;
 var FONT_GAP = 16;
 var COLUMN_GAP = 50;
 var COLUMN_WIDTH = 40;
-var TEXT_WIDTH = 50;
-var BAR_HEIGHT = 20;
 var COLUMN_HEIGHT = 150;
 
 var renderCloud = function (ctx, x, y, color) {
@@ -29,7 +27,7 @@ var getMaxElement = function (arr) {
   return maxElement;
 };
 
-window.renderStatistics = function(ctx, players, times) {
+window.renderStatistics = function (ctx, players, times) {
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
@@ -53,5 +51,5 @@ window.renderStatistics = function(ctx, players, times) {
       ctx.fillStyle = hsl;
       ctx.fillRect(CLOUD_X + COLUMN_GAP + (COLUMN_GAP + COLUMN_WIDTH) * i, CLOUD_Y + 75 + (COLUMN_HEIGHT - (COLUMN_HEIGHT * times[i]) / maxTime), COLUMN_WIDTH, (COLUMN_HEIGHT * times[i]) / maxTime);
     }
-  };
+  }
 };
