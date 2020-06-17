@@ -43,13 +43,7 @@ window.renderStatistics = function (ctx, players, times) {
     ctx.fillText(players[i], CLOUD_X + COLUMN_GAP + (COLUMN_GAP + COLUMN_WIDTH) * i, CLOUD_Y + CLOUD_HEIGHT - GAP - FONT_GAP);
     ctx.fillText(Math.ceil(times[i]), CLOUD_X + COLUMN_GAP + (COLUMN_GAP + COLUMN_WIDTH) * i, CLOUD_Y + 75 + (COLUMN_HEIGHT - (COLUMN_HEIGHT * times[i]) / maxTime) - GAP);
 
-    if (players[i] === 'Вы') {
-      ctx.fillStyle = 'hsl(0, 100%, 50%)';
-      ctx.fillRect(CLOUD_X + COLUMN_GAP + (COLUMN_GAP + COLUMN_WIDTH) * i, CLOUD_Y + 75 + (COLUMN_HEIGHT - (COLUMN_HEIGHT * times[i]) / maxTime), COLUMN_WIDTH, (COLUMN_HEIGHT * times[i]) / maxTime);
-    } else {
-      var hsl = 'hsl(240, ' + (100 - (25 * i)) + '%, 50%)';
-      ctx.fillStyle = hsl;
-      ctx.fillRect(CLOUD_X + COLUMN_GAP + (COLUMN_GAP + COLUMN_WIDTH) * i, CLOUD_Y + 75 + (COLUMN_HEIGHT - (COLUMN_HEIGHT * times[i]) / maxTime), COLUMN_WIDTH, (COLUMN_HEIGHT * times[i]) / maxTime);
-    }
+    ctx.fillStyle = (players[i] === 'Вы') ? 'hsl(0, 100%, 50%)' : 'hsl(240, ' + (100 - (25 * i)) + '%, 50%)';
+    ctx.fillRect(CLOUD_X + COLUMN_GAP + (COLUMN_GAP + COLUMN_WIDTH) * i, CLOUD_Y + 75 + (COLUMN_HEIGHT - (COLUMN_HEIGHT * times[i]) / maxTime), COLUMN_WIDTH, (COLUMN_HEIGHT * times[i]) / maxTime);
   }
 };
