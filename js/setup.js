@@ -29,12 +29,35 @@ var getRandomName = function () {
   return WIZARD_NAMES[getRandom(0, WIZARD_NAMES.length)] + WIZARD_LASTNAMES[getRandom(0, WIZARD_LASTNAMES.length)];
 };
 
+var wizards = [
+  {
+    name: getRandomName(),
+    coatColor: getRandomCoatColor(),
+    eyesColor: getRandomEyesColor()
+  },
+  {
+    name: getRandomName(),
+    coatColor: getRandomCoatColor(),
+    eyesColor: getRandomEyesColor()
+  },
+  {
+    name: getRandomName(),
+    coatColor: getRandomCoatColor(),
+    eyesColor: getRandomEyesColor()
+  },
+  {
+    name: getRandomName(),
+    coatColor: getRandomCoatColor(),
+    eyesColor: getRandomEyesColor()
+  }
+];
+
 var createWizard = function () {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent = getRandomName();
-  wizardElement.querySelector('.wizard-coat').style.fill = getRandomCoatColor();
-  wizardElement.querySelector('.wizard-eyes').style.fill = getRandomEyesColor();
+  wizardElement.querySelector('.setup-similar-label').textContent = wizards[i].name;
+  wizardElement.querySelector('.wizard-coat').style.fill = wizards[i].coatColor;
+  wizardElement.querySelector('.wizard-eyes').style.fill = wizards[i].eyesColor;
 
   return wizardElement;
 };
