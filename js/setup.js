@@ -43,7 +43,7 @@ var fragment = document.createDocumentFragment();
 
 for (var i = 0; i < 4; i++) {
   fragment.appendChild(createWizard());
-};
+}
 
 similarListElement.appendChild(fragment);
 
