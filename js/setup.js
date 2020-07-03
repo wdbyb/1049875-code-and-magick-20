@@ -18,25 +18,17 @@ var getRandom = function (min, max) {
   return Math.floor(min + Math.random() * (max + 1 - min));
 };
 
-var getRandomCoatColor = function () {
-  return COAT_COLORS[getRandom(0, COAT_COLORS.length - 1)];
-};
-
-var getRandomEyesColor = function () {
-  return EYES_COLORS[getRandom(0, EYES_COLORS.length - 1)];
-};
-
-var getRandomName = function () {
-  return WIZARD_NAMES[getRandom(0, WIZARD_NAMES.length - 1)] + ' ' + WIZARD_LASTNAMES[getRandom(0, WIZARD_LASTNAMES.length - 1)];
+var getRandomElement = function (array) {
+  return array[getRandom(0, array.length - 1)];
 };
 
 var wizards = [];
 
 for (var i = 0; i < MAX_WIZARDS; i++) {
   wizards.push({
-    name: getRandomName(),
-    coatColor: getRandomCoatColor(),
-    eyesColor: getRandomEyesColor()
+    name: getRandomElement(WIZARD_NAMES) + ' ' + getRandomElement(WIZARD_LASTNAMES),
+    coatColor: getRandomElement(COAT_COLORS),
+    eyesColor: getRandomElement(EYES_COLORS)
   });
 }
 
