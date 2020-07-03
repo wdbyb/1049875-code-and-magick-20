@@ -9,48 +9,36 @@ var similarWizardTemplate = document.querySelector('#similar-wizard-template')
   .querySelector('.setup-similar-item');
 
 var WIZARD_NAMES = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
-var WIZARD_LASTNAMES = [' да Марья', ' Верон', ' Мирабелла', ' Вальц', ' Онопко', ' Топольницкая', ' Нионго', ' Ирвинг'];
-var EYES_COLOR = ['black', 'red', 'blue', 'yellow', 'green'];
-var COAT_COLOR = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var WIZARD_LASTNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
+var EYES_COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
+var COAT_COLORS = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
+var MAX_WIZARDS = 4;
 
 var getRandom = function (min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+  return Math.floor(min + Math.random() * (max + 1 - min));
 };
 
 var getRandomCoatColor = function () {
-  return COAT_COLOR[getRandom(0, COAT_COLOR.length)];
+  return COAT_COLORS[getRandom(0, COAT_COLORS.length - 1)];
 };
 
 var getRandomEyesColor = function () {
-  return EYES_COLOR[getRandom(0, EYES_COLOR.length)];
+  return EYES_COLORS[getRandom(0, EYES_COLORS.length - 1)];
 };
 
 var getRandomName = function () {
-  return WIZARD_NAMES[getRandom(0, WIZARD_NAMES.length)] + WIZARD_LASTNAMES[getRandom(0, WIZARD_LASTNAMES.length)];
+  return WIZARD_NAMES[getRandom(0, WIZARD_NAMES.length - 1)] + ' ' + WIZARD_LASTNAMES[getRandom(0, WIZARD_LASTNAMES.length - 1)];
 };
 
-var wizards = [
-  {
+var wizards = [];
+
+for (var i = 0; i < MAX_WIZARDS; i++) {
+  wizards.push({
     name: getRandomName(),
     coatColor: getRandomCoatColor(),
     eyesColor: getRandomEyesColor()
-  },
-  {
-    name: getRandomName(),
-    coatColor: getRandomCoatColor(),
-    eyesColor: getRandomEyesColor()
-  },
-  {
-    name: getRandomName(),
-    coatColor: getRandomCoatColor(),
-    eyesColor: getRandomEyesColor()
-  },
-  {
-    name: getRandomName(),
-    coatColor: getRandomCoatColor(),
-    eyesColor: getRandomEyesColor()
-  }
-];
+  });
+}
 
 var createWizard = function () {
   var wizardElement = similarWizardTemplate.cloneNode(true);
@@ -64,7 +52,7 @@ var createWizard = function () {
 
 var fragment = document.createDocumentFragment();
 
-for (var i = 0; i < 4; i++) {
+for (i = 0; i < MAX_WIZARDS; i++) {
   fragment.appendChild(createWizard());
 }
 
