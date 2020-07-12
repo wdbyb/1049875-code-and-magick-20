@@ -65,17 +65,38 @@ var onPopupEscPress = function (evt) {
   }
 };
 
+var getCoatColor = function () {
+  wizardCoat.style.fill = COAT_COLORS[getRandom(0, COAT_COLORS.length - 1)];
+  coatInput.value = wizardCoat.style.fill;
+};
+
+var getEyesColor = function () {
+  wizardEyes.style.fill = EYES_COLORS[getRandom(0, EYES_COLORS.length - 1)];
+  eyesInput.value = wizardEyes.style.fill;
+};
+
+var getFireballColor = function () {
+  var randomFireballColor = FIREBALL_COLORS[getRandom(0, FIREBALL_COLORS.length - 1)];
+  wizardFireball.style.backgroundColor = randomFireballColor;
+  fireballInput.value = randomFireballColor;
+};
 
 var openPopup = function () {
   userDialog.classList.remove('hidden');
 
   document.addEventListener('keydown', onPopupEscPress);
+  wizardCoat.addEventListener('click', getCoatColor);
+  wizardEyes.addEventListener('click', getEyesColor);
+  wizardFireball.addEventListener('click', getFireballColor);
 };
 
 var closePopup = function () {
   userDialog.classList.add('hidden');
 
   document.removeEventListener('keydown', onPopupEscPress);
+  wizardCoat.removeEventListener('click', getCoatColor);
+  wizardEyes.removeEventListener('click', getEyesColor);
+  wizardFireball.removeEventListener('click', getFireballColor);
 };
 
 setupOpen.addEventListener('click', function () {
@@ -98,20 +119,4 @@ setupClose.addEventListener('keydown', function (evt) {
     evt.preventDefault();
     closePopup();
   }
-});
-
-wizardCoat.addEventListener('click', function () {
-  wizardCoat.style.fill = COAT_COLORS[getRandom(0, COAT_COLORS.length - 1)];
-  coatInput.value = wizardCoat.style.fill;
-});
-
-wizardEyes.addEventListener('click', function () {
-  wizardEyes.style.fill = EYES_COLORS[getRandom(0, EYES_COLORS.length - 1)];
-  eyesInput.value = wizardEyes.style.fill;
-});
-
-wizardFireball.addEventListener('click', function () {
-  var randomFireballColor = FIREBALL_COLORS[getRandom(0, FIREBALL_COLORS.length - 1)];
-  wizardFireball.style.backgroundColor = randomFireballColor;
-  fireballInput.value = randomFireballColor;
 });
